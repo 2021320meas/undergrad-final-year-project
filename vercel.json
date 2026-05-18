@@ -1,0 +1,10 @@
+{
+  "headers": [
+    {
+      "source": "/static/(.*)\\.pdf",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ]
+}
