@@ -19,7 +19,7 @@ function App() {
           <h2 className="text-3xl font-semibold text-blue-900 mb-4">Abstract</h2>
           <p className="text-gray-700 leading-relaxed">
             Detecting plagiarism in the Khmer language remains a significant challenge in Cambodia due to the limited availability of digitized texts. This limitation has led to frequent plagiarism found in many academic papers across institutions, emphasizing the urgent need for a digital solution.
-            This project aims to develop a plagiarism detection web application specifically for the Khmer language and to identify the most effective approach by comparing four methods: Term Frequency–Inverse Document Frequency with cosine similarity, N-gram matching using a PostgreSQL inverted index with Jaccard similarity, Bidirectional Encoder Representations from Transformers (BERT), and Elasticsearch combined with the Rapidfuzz Python library. The most efficient method is integrated into the web application. Since all collected PDFs are image-based and contain non-selectable text, they are processed using Optical Character Recognition (OCR). The extracted text then undergoes a Khmer-specific data preprocessing pipeline before analysis.
+            This project aims to develop a plagiarism detection web application specifically for the Khmer language and to identify the most effective approach by comparing four methods: Term Frequency–Inverse Document Frequency with cosine similarity, N-gram matching using a PostgreSQL inverted index with Jaccard similarity, sentenceTransformers, and Elasticsearch combined with the Rapidfuzz Python library. The most efficient method is integrated into the web application. Since all collected PDFs are image-based and contain non-selectable text, they are processed using Optical Character Recognition (OCR). The extracted text then undergoes a Khmer-specific data preprocessing pipeline before analysis.
             The web application is currently deployed on self-managed servers at the Ministry of Education, Youth and Sport of Cambodia (MoEYS), the primary funder of this initiative. Thirteen universities in Cambodia are using it to assess educational materials in the Khmer language, helping evaluate the system and identify areas for further improvement.
             While the application successfully detects identical and similar plagiarized sentences, its accuracy is limited by the quality of the OCR. Common OCR errors often distort textual content, reducing the accuracy of plagiarism detection. Future work will focus on improving OCR performance and incorporating internet-based plagiarism detection to expand the system’s capabilities.
           </p>
@@ -46,7 +46,7 @@ function App() {
         <section className="mb-12">
           <h2 className="text-3xl font-semibold text-blue-900 mb-4">Technology Stack and Development Environment</h2>
           <ul className="list-disc pl-6 text-gray-700 leading-relaxed">
-            <li><strong>Machine Learning and NLP Tools:</strong> Scikit-learn (TF-IDF), Transformers (BERT)</li>
+            <li><strong>Machine Learning and NLP Tools:</strong> Scikit-learn (TF-IDF), SentenceTransformers</li>
             <li><strong>Optical Character Recognition and PDF Text Extraction Tools:</strong> Tesseract, Google Cloud Vision AI, Python PDF parsing libraries</li>
             <li><strong>Search and Retrieval Tools:</strong> FAISS, Elasticsearch</li>
             <li><strong>Backend:</strong> Python, Flask</li>
@@ -64,7 +64,7 @@ function App() {
           <ol className="list-decimal pl-6 text-gray-700 leading-relaxed">
             <li><strong>TF-IDF and Cosine Similarity:</strong> Converts Khmer sentences into TF-IDF vectors and uses cosine similarity to measure how close their wording is.</li>
             <li><strong>N-gram, Jaccard Similarity, and Inverted Index in PostgreSQL:</strong> Breaks sentences into n-grams and compares them using Jaccard similarity through inverted index structure built in PostgreSQL.</li>
-            <li><strong>BERT:</strong> Generates semantic sentence embeddings with BERT and uses FAISS to find high-semantic-similarity matches.</li>
+            <li><strong>SentenceTransformer:</strong> Generates semantic sentence embeddings with SentenceTransformer and uses FAISS to find high-semantic-similarity matches.</li>
             <li><strong>Elasticsearch and RapidFuzz:</strong> Indexes all sentences and retrieves potential matches, enabling large-scale plagiarism detection.</li>
           </ol> 
           {/* <h2 className="text-xl font-medium text-gray-800 mt-8 mb-5">Final System Architecture and Technical Implementation</h2>
@@ -119,7 +119,7 @@ function App() {
         {/* <section className="mb-12">
           <h2 className="text-3xl font-semibold text-blue-900 mb-4">Conclusion</h2>
           <p className="text-gray-700 leading-relaxed">
-            Successfully deployed on a self-hosted server within the Cambodian Ministry of Education, Youth and Sport, this system addresses the lack of digital tools for supporting plagiarism detection in Cambodia. Designed specifically for Khmer-language documents, it enables 13 public universities to access the platform and test the plagiarism detection tool through a web-based interface. Several detection methods—including TF-IDF with cosine similarity, N-gram with Jaccard similarity, BERT, and Elasticsearch—were explored and evaluated for accuracy, scalability, and performance. Based on these evaluations, Elasticsearch was selected and integrated into the system to provide high-performance document retrieval. Future development will focus on improving OCR accuracy for scanned PDFs and expanding detection capabilities to include online sources, further strengthening research integrity nationwide.
+            Successfully deployed on a self-hosted server within the Cambodian Ministry of Education, Youth and Sport, this system addresses the lack of digital tools for supporting plagiarism detection in Cambodia. Designed specifically for Khmer-language documents, it enables 13 public universities to access the platform and test the plagiarism detection tool through a web-based interface. Several detection methods—including TF-IDF with cosine similarity, N-gram with Jaccard similarity, SentenceTransformer, and Elasticsearch—were explored and evaluated for accuracy, scalability, and performance. Based on these evaluations, Elasticsearch was selected and integrated into the system to provide high-performance document retrieval. Future development will focus on improving OCR accuracy for scanned PDFs and expanding detection capabilities to include online sources, further strengthening research integrity nationwide.
           </p>
         </section> */}
 
